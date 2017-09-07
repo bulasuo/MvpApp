@@ -8,18 +8,26 @@ import android.os.Looper;
  */
 public class MainHandler {
 
-    private static final Handler mHandler = new Handler(Looper.getMainLooper());
+    private final Handler mHandler;
 
 
     private MainHandler() {
-        throw new RuntimeException("MainHandler cannot be initialized!");
+        mHandler = new Handler(Looper.getMainLooper());
+    }
+
+    private static class HolderClass {
+        private static final MainHandler instance = new MainHandler();
+    }
+
+    public static MainHandler getInstance() {
+        return HolderClass.instance;
     }
 
     /**
      * 在主线程执行
      * @param runnable
      */
-    public static void runInMainThread(Runnable runnable) {
+    public void runInMainThread(Runnable runnable) {
         mHandler.post(runnable);
     }
 }

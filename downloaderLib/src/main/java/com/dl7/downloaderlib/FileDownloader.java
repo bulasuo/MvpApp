@@ -108,6 +108,7 @@ public class FileDownloader {
 
     /**
      * 启动下载
+     * 线程切换这样处理不好，不建议使用，功能已被去掉
      *
      * @param url                  url
      * @param name                 文件名

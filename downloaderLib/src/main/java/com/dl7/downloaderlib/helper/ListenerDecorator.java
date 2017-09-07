@@ -24,7 +24,7 @@ public final class ListenerDecorator implements DownloadListener {
     public void onStart(final FileInfo fileInfo) {
         fileInfo.setStatus(DownloadStatus.START);
         if (mIsUiThread) {
-            MainHandler.runInMainThread(new Runnable() {
+            MainHandler.getInstance().runInMainThread(new Runnable() {
                 @Override
                 public void run() {
                     mListener.onStart(fileInfo);
@@ -39,7 +39,7 @@ public final class ListenerDecorator implements DownloadListener {
     public void onUpdate(final FileInfo fileInfo) {
         fileInfo.setStatus(DownloadStatus.DOWNLOADING);
         if (mIsUiThread) {
-            MainHandler.runInMainThread(new Runnable() {
+            MainHandler.getInstance().runInMainThread(new Runnable() {
                 @Override
                 public void run() {
                     mListener.onUpdate(fileInfo);
@@ -54,7 +54,7 @@ public final class ListenerDecorator implements DownloadListener {
     public void onStop(final FileInfo fileInfo) {
         fileInfo.setStatus(DownloadStatus.STOP);
         if (mIsUiThread) {
-            MainHandler.runInMainThread(new Runnable() {
+            MainHandler.getInstance().runInMainThread(new Runnable() {
                 @Override
                 public void run() {
                     mListener.onStop(fileInfo);
@@ -69,7 +69,7 @@ public final class ListenerDecorator implements DownloadListener {
     public void onComplete(final FileInfo fileInfo) {
         fileInfo.setStatus(DownloadStatus.COMPLETE);
         if (mIsUiThread) {
-            MainHandler.runInMainThread(new Runnable() {
+            MainHandler.getInstance().runInMainThread(new Runnable() {
                 @Override
                 public void run() {
                     mListener.onComplete(fileInfo);
@@ -85,7 +85,7 @@ public final class ListenerDecorator implements DownloadListener {
     public void onCancel(final FileInfo fileInfo) {
         fileInfo.setStatus(DownloadStatus.CANCEL);
         if (mIsUiThread) {
-            MainHandler.runInMainThread(new Runnable() {
+            MainHandler.getInstance().runInMainThread(new Runnable() {
                 @Override
                 public void run() {
                     mListener.onCancel(fileInfo);
@@ -101,7 +101,7 @@ public final class ListenerDecorator implements DownloadListener {
     public void onError(final FileInfo fileInfo, final String errorMsg) {
         fileInfo.setStatus(DownloadStatus.ERROR);
         if (mIsUiThread) {
-            MainHandler.runInMainThread(new Runnable() {
+            MainHandler.getInstance().runInMainThread(new Runnable() {
                 @Override
                 public void run() {
                     mListener.onError(fileInfo, errorMsg);
